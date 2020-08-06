@@ -1,0 +1,7 @@
+/auth/node_modules
+/courses/node_modules
+/orders/node_modules
+/common
+/expiration/node_modules
+/payment/node_modules
+/client/node_modules
