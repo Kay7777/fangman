@@ -27,6 +27,7 @@ router.delete(
     // publish an delete event
     new OrderCancelledPublisher(natsWrapper.client).publish({
       id: order.id,
+      version: order.version,
       course: {
         id: order.course.id,
       },

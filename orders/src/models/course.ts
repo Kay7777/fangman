@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { OrderStatus } from "@fangman/common";
-import { Order } from "../models/order";
+import { Order } from "./order";
 import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface CourseAttrs {
@@ -69,7 +69,7 @@ courseSchema.methods.isReserved = async function () {
       $in: [OrderStatus.Created, OrderStatus.Pending, OrderStatus.Complete],
     },
   });
-  return order ? true : false;
+  return !!order;
 };
 
 const Course = mongoose.model<CourseDoc, CourseModel>("Course", courseSchema);

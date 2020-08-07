@@ -36,12 +36,12 @@ router.post(
     }
     // make sure the ticker is not been reserved.
     const isReserved = await course.isReserved();
-    if (!isReserved) {
+    if (isReserved) {
       throw new BadRequestError("Course has been reserved!");
     }
     // calculare an expiration date for this order
     const expiration = new Date();
-    expiration.setSeconds(expiration.getSeconds() + 15 * 60);
+    expiration.setSeconds(expiration.getSeconds() + 0.2 * 60);
     // build the order and save it in to the database
     const order = Order.build({
       userId: req.user!.id,
